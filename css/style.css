@@ -11,7 +11,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 90px;
+    height: 110px;
 }
 
 h1 {
@@ -32,19 +32,32 @@ h1 {
 }
 
 .photographer_section article {
+    width: 100%;
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+.photographer_section a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
 
 .photographer_section article h2 {
+    text-decoration: none;
     color: #D3573C;
-    font-size: 36px;
+    font-size: 33px;
 }
 
 .photographer_section article img {
+    text-decoration: none;
+    border-radius: 50%;
+    object-fit: cover;
     height: 200px;
     width: 200px;
 }
+/* Photograph.html */

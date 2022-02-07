@@ -1,26 +1,124 @@
+main{
+    margin-bottom: 3vh;
+}
+
 #contact_modal {
     display: none;
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: white;
+    
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    align-items: center;
+    display: flex;
+    background-color: #FAFAFA;
+    margin: 10px 100px;
+    justify-content: space-around;
+}
+.photograph-header{
+
+}
+.name-photograph{
+
+}
+.name-photograph h2{
+    font-weight: normal;
+    margin: 0;
+    color: #D3573C;
+    font-size: 2.6rem;
+}
+.name-photograph h3{
+    margin: 15px 0px;
+    font-weight: normal;
+    color: #901C1C;
+}
+.name-photograph p{
+    color: #525252;
+}
+.photograph-header button{
+
+}
+.photograph-header img{
+    text-decoration: none;
+    border-radius: 50%;
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
 }
 
 .contact_button {
+    margin-top: 46px;
     font-size: 20px;
     font-weight: bold;
     color: white;
     padding: 11px;
-    width: 170px;
-    height: 70px;
+    width: 164px;
+    height: 65px;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
 }
+.content-tri{
+    display: flex;
+    margin: 23px 0 0 100px;
+}
+.content-tri h3{
+    font-size: 1.1rem;
+}
+.select-tri{
+    align-items: center ;
+    margin-left: 30px;
+    display: flex;
+}
+.select-tri select{
+    height: 40px;
+    padding-left: 6px;
+    font-size: 1rem;
+    border: none;
+    color: white;
+    background: #901C1C;
+    width: 129px;
+    border-radius: 5px;
 
+}
+.content-image{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin: 40px 100px 0px 100px;
+}
+.content-image article img{
+    border-radius: 10px;
+    object-fit: cover;
+    height: 360px;
+    width: 100%;
+}
+/* video miniature image */
+#video-miniature{
+    height: 200px;
+}
+.content-like{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.content-like h3{
+    font-size: 1.4rem;
+    color: #901C1C;
+}
+.number-icon{
+    font-size: 1.4rem;
+    color: #901C1C;
+}
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -30,7 +128,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    margin: auto;
+    margin: 5% auto;
 }
 
 .modal header {
@@ -60,12 +158,12 @@ form label {
     font-size: 36px;
 }
 
-form div {
+.formData{
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    margin-bottom: 0px;
 }
 
 form input {
@@ -73,4 +171,22 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 2rem;
+}
+/* #message{
+    
+} */
+form textarea{
+    width: 100%;
+    height: 208px;
+    border: none;
+    border-radius: 5px;
+    font-size: 2rem;
+    resize: none;
+
+}
+form p {
+    display: none;
+    color: red;
+    font-size: 1.1rem;
 }
