@@ -17,7 +17,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+     <a href="index.html"> <img src="assets/images/logo.png" class="logo" /></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -204,7 +204,10 @@
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-        <form>
+        <form  name="reserve"
+        action="photographer.html"
+        method="get"
+        id="formvalidation">
           <div class="formData">
             <label for="first">Prénom</label><br />
             <input
@@ -253,6 +256,7 @@
         </form>
       </div>
     </div>
+    <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>

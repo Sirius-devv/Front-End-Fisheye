@@ -80,13 +80,14 @@ main{
     display: flex;
 }
 .select-tri select{
-    height: 40px;
-    padding-left: 6px;
+    padding-top: 3px;
+    height: 45px;
+    padding-left: 9px;
     font-size: 1rem;
     border: none;
     color: white;
     background: #901C1C;
-    width: 129px;
+    width: 134px;
     border-radius: 5px;
 
 }
@@ -104,6 +105,7 @@ main{
 }
 /* video miniature image */
 #video-miniature{
+    /* BOX-SHADOW: 3PX 2PX 5PX 2px #8080808c; */
     height: 200px;
 }
 .content-like{
@@ -141,7 +143,7 @@ main{
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 61px;
     font-weight: normal;
     text-align: center;
 }
@@ -173,9 +175,8 @@ form input {
     border-radius: 5px;
     font-size: 2rem;
 }
-/* #message{
-    
-} */
+/* your message */
+
 form textarea{
     width: 100%;
     height: 208px;
@@ -186,7 +187,26 @@ form textarea{
 
 }
 form p {
+    margin: 0;
     display: none;
     color: red;
     font-size: 1.1rem;
 }
+/* class javascript contact */
+.display-block{
+    display: block;
+}
+.display-none{
+    display: none;
+}
+.border-valid{
+    border: #007e00b3 3px solid;
+}
+.border-invalid{
+    border: rgba(255, 0, 0, 0.884) 3px solid;
+}
+/* numberlike */
+.icon-like i{
+    cursor: pointer;
+}
+
