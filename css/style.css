@@ -1,63 +1,111 @@
 @import url("photographer.css");
 
+a {
+  color: black;
+}
 body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
 }
 
-
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 110px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
 }
 
 h1 {
-    color: #901C1C;
-    margin-right: 100px;
+  color: #901c1c;
+  margin-right: 100px;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
+  margin-left: 100px;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
 }
 
 .photographer_section article {
-    width: 100%;
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  width: 100%;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.photographer_section a {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
+.photographer_section .lienpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .photographer_section article h2 {
-    text-decoration: none;
-    color: #D3573C;
-    font-size: 33px;
+  text-decoration: none;
+  color: #d3573c;
+  font-size: 33px;
 }
 
 .photographer_section article img {
-    text-decoration: none;
-    border-radius: 50%;
-    object-fit: cover;
-    height: 200px;
-    width: 200px;
+  text-decoration: none;
+  border-radius: 50%;
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+}
+.description-photograph {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.description-photograph p:nth-child(1) {
+  color: #901c1c;
+  font-size: 1.2rem;
+  margin: 0 0 3px 0;
+}
+.description-photograph p:nth-child(2) {
+  color: black;
+  font-size: 1rem;
+  margin: 4px 0 3px 0;
+}
+.description-photograph p:nth-child(3) {
+  color: #525252;
+  font-size: 0.9rem;
+  margin: 4px 0 3px 0;
+}
+@media screen and (max-width: 768px) {
+
+
+header{
+    flex-direction: column;
+}
+
+.photographer_section {
+    
+    grid-template-columns: 1fr;
+   
+}
+h1{
+    height: 38px;
+    width: 50%;
+    margin-right: 0px;
+}
+.logo{
+    margin-top: 30px;
+    height: 35px;
+    margin-left: 20PX;
+}
 }
 /* Photograph.html */

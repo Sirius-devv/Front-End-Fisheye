@@ -23,12 +23,8 @@ main{
     margin: 10px 100px;
     justify-content: space-around;
 }
-.photograph-header{
 
-}
-.name-photograph{
 
-}
 .name-photograph h2{
     font-weight: normal;
     margin: 0;
@@ -43,9 +39,7 @@ main{
 .name-photograph p{
     color: #525252;
 }
-.photograph-header button{
 
-}
 .photograph-header img{
     text-decoration: none;
     border-radius: 50%;
@@ -208,5 +202,23 @@ form p {
 /* numberlike */
 .icon-like i{
     cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+    .content-image{
+        grid-template-columns: 1fr 1fr;
+        gap: 15px; 
+        margin: 30px 10px 0px 10px;
+    }
+    .photograph-header{
+        margin: 0;
+    }
+    .content-tri{
+        margin: 4%;
+    }
+}
+@media screen and (max-width: 500px){
+    .content-image{
+        grid-template-columns: 1fr;
+    }
 }
 

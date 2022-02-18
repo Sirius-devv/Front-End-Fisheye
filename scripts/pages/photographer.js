@@ -1,26 +1,23 @@
 //Mettre le code JavaScript lié à la page photographer.html
-// add like
-const heartLike = document.querySelectorAll(".icon-like");
-const numberLike = document.querySelector(".number-like");
 
-heartLike.forEach((heart) => {
-    heart.addEventListener("click", () => {
-        if(numberLike.textContent <= 12){
-            numberLike.textContent++;
-            console.log("cliked");
-        }else{
-            numberLike.textContent--;
-        }
-    })
-});
+const idPhotograph = window.location.search.split("?").join("")
 
-// heartLike.addEventListener("click", () => {
-   
-//    if(heartLike.clicked){
-//        numberLike.textContent++;
-//        console.log("something");
-//    }else{
-//     console.log("+1+1+1+1");
-//     numberLike.textContent++;
-//    }
-// })
+console.log(idPhotograph);
+
+let userMedia = [];
+
+const fetchCall = async () => {
+    await fetch("data/photographers.json")
+    .then((res) => res.json())
+    .then((promise) => {userMedia = promise.media
+        userPhotograph = promise.photographers
+    console.log(userMedia)
+    console.log(userPhotograph)}) 
+}
+fetchCall();
+
+const test = async () => {
+   await console.log(userMedia.map((user) => `${user.photographerId}`));
+}
+
+test();
