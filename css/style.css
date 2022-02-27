@@ -29,7 +29,7 @@ h1 {
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
+  gap: 56px;
   margin-top: 100px;
 }
 

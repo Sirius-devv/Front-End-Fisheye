@@ -97,6 +97,12 @@ main{
     height: 360px;
     width: 100%;
 }
+.content-image article video{
+    border-radius: 10px;
+    object-fit: cover;
+    height: 230px;
+    width: 100%;
+}
 /* video miniature image */
 #video-miniature{
     /* BOX-SHADOW: 3PX 2PX 5PX 2px #8080808c; */
