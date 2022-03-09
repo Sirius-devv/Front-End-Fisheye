@@ -1,6 +1,5 @@
 // form contact
 const modalContact = document.querySelector("#contact_modal");
-console.log(modalContact);
 
 function displayModal() {
   const modal = document.getElementById("contact_modal");
@@ -11,13 +10,23 @@ function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
 }
+const callFetch = async () => {
+  await fetch("data/photographers.json")
+    .then((res) => res.json())
+    .then((data) => {
+      userData = data.photographers;
+      theMedia = data.media;
+    });
+};
 
 // modal open
-const modalValid = () => {
+const modalValid = async () => {
+  await callFetch();
+  const found = userData.find(element => element.id == idPhotograph)
   modalContact.innerHTML = `
      <div class="modal">
      <header>
-      <h2>Contactez-moi</h2>
+      <h2>Contactez-moi ${found.name}</h2>
       <img src="assets/icons/close.svg" onclick="closeModal()" />
     </header>
     <form
@@ -84,10 +93,8 @@ const formFunction = async () => {
   await modalValid();
 
   const formValidation = document.querySelector("#formvalidation");
-  console.log(formValidation);
   // all Input
   const prenomInput = document.querySelector("#first");
-  console.log(prenomInput);
   const nameInput = document.querySelector("#last");
   const emailInput = document.querySelector("#email");
   const yourMessage = document.querySelector("#message");

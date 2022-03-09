@@ -117,14 +117,67 @@ main{
     font-size: 1.4rem;
     color: #901C1C;
 }
+.contentLikeTotal{
+    z-index: 1;
+    border-radius: 3px;
+    padding: 0;
+    border-radius: -1px;
+    margin-left: 68%;
+    margin-top: 186px;
+    position: fixed;
+    background: #D3573C;
+    width: 27%;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: black;
+    font-size: 1.3rem;
+}
+.price-number{
+    display: flex;
+    color: black;
+    justify-content: space-between;
+    width: 20%;
+}
+.icon-like-svg{
+    display: flex;
+    align-items: center;
+}
 .number-icon{
     font-size: 1.4rem;
     color: #901C1C;
 }
+.modal-Open-Images{
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: white;
+}
+.display-Block{
+    display: block;
+}
+.imageOpen{
+    position: fixed;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    height: 90%;
+    width: 90%;
+    overflow: auto;
+    background-color: white;
+}
+
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 58%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -143,7 +196,7 @@ main{
 }
 
 .modal header h2 {
-    font-size: 61px;
+    font-size: 37px;
     font-weight: normal;
     text-align: center;
 }
@@ -227,4 +280,17 @@ form p {
         grid-template-columns: 1fr;
     }
 }
-
+@media screen and (max-width: 968px){
+    .photograph-header img {
+        height: 155px;
+        width: 157px;
+    }
+    .contact_button{
+        width: 120px;
+        height: 61px;
+        font-size: 18px;
+    }
+    .name-photograph{
+        width: 30%;
+    }
+}
