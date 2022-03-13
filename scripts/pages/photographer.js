@@ -1,76 +1,81 @@
 //Mettre le code JavaScript lié à la page photographer.html
 // creation d'une nouvelle page avec les id
+///////////////////idDuPhotogrtaphRecuperation////////////////
 const idPhotograph = window.location.search.split("?").join("");
+//////////////////////LesConteneurGlobalDeToutLesElementEnHtml///////////////////////
 const photographHeader = document.querySelector(".photograph-header");
 const contentImage = document.querySelector(".content-image");
 const contentTri = document.querySelector(".content-tri");
 const cotentLikeTotal = document.querySelector(".contentLikeTotal");
+const modalOpen = document.querySelector(".modal-Open-Images");
 console.log(idPhotograph);
+/////////////////////////LesVariablesGlobalQuiChangeEnFunction//////////////////////////
 let numberLike = [];
+let photograph;
 let userMedia = [];
 let contentLikeNumber = [];
-
+let LesMediaDePhotograph = [];
+/////////////functionCallFetch/////////////////////
 const fetchCall = async () => {
   await fetch("data/photographers.json")
     .then((res) => res.json())
     .then((promise) => {
       userMedia = promise.media;
       userPhotograph = promise.photographers;
+
+      photograph = userPhotograph.find((element) => element.id == idPhotograph);
+      console.log(photograph);
+      affichagePhotographer();
+
+      LesMediaDePhotograph = userMedia.filter(
+        (list) => list.photographerId == idPhotograph
+      );
+
+      affichageDesMedia();
+      incrementLikeClickHeart();
+      InputTriPopularityDate();
+      lightBox();
     });
 };
 fetchCall();
-
-const test = async () => {
-  await fetchCall();
-  for (let i = 0; i < 6; i++) {
-    if (userPhotograph[i].id == idPhotograph) {
-      // console.log(userPhotograph[i]);
-      photographHeader.innerHTML = `
+//////////////////////FunctionAffichageDesPhotographerDansLeurPage/////////////////////////:
+const affichagePhotographer = async () => {
+  photographHeader.innerHTML = `
           <div class="name-photograph">
-          <h2>${userPhotograph[i].name}</h2>
-          <h3>${userPhotograph[i].city}, ${userPhotograph[i].country}</h3>
-          <p>${userPhotograph[i].tagline}</p>
+          <h2>${photograph.name}</h2>
+          <h3>${photograph.city}, ${photograph.country}</h3>
+          <p>${photograph.tagline}</p>
         </div>
         <button class="contact_button" onclick="displayModal()">
           Contactez-moi
         </button>
         <img
-          src="./FishEye-Photos/Sample-Photos/Photographers_ID_Photos/${userPhotograph[i].portrait}"
-          alt="Photo-${userPhotograph[i].name}"
+          src="./FishEye-Photos/Sample-Photos/Photographers_ID_Photos/${photograph.portrait}"
+          alt="Photo-${photograph.name}"
         />`;
-    }
-  }
 };
-
-test();
-
-const mediaFunction = async () => {
-  await fetchCall();
-
+///////////////functionAffichageDesMedia/////////////////////
+const affichageDesMedia = async () => {
   const resultFound = userPhotograph.find(
     (element) => element.id == idPhotograph
-  );
-
-  const result = userMedia.filter(
-    (list) => list.photographerId == idPhotograph
   );
 
   contentTri.innerHTML = `
          <h3>Trier par</h3>
         <div class="select-tri">
           <select name="selectName" id="selectName">
-            <option selected value="" id ="popularite">Popularité</option>
-            <option value="">Date</option>
-            <option value="" id="titre">Titre</option>
+            <option  value="" class="popularite">Popularité</option>
+            <option  value="">Date</option>    
+            <option  value="" class="titre">Titre</option>
+              
           </select>
         </div> 
 
     `;
 
-  contentImage.innerHTML = result
-    .map((user) => {
-      if (user.image) {
-        return `
+  contentImage.innerHTML = LesMediaDePhotograph.map((user) => {
+    if (user.image) {
+      return `
   <article>
   <img
     src="FishEye-Photos/Sample-Photos/${user.photographerId}/${user.image}"
@@ -88,11 +93,11 @@ const mediaFunction = async () => {
 </article>
 
   `;
-      } else {
-        return `
+    } else {
+      return `
     <article>
-    <video controls="controls">
-    <source src="FishEye-Photos/Sample-Photos/${user.photographerId}/${user.video}">
+    <video controls="controls" class="video-replace">
+    <source src="FishEye-Photos/Sample-Photos/${user.photographerId}/${user.video}" class="video-replace">
     </video>
     <div class="content-like">
       <h3>${user.title}</h3>
@@ -105,9 +110,8 @@ const mediaFunction = async () => {
     </div>
     </article>
     `;
-      }
-    })
-    .join("");
+    }
+  }).join("");
   cotentLikeTotal.innerHTML = `
     <div class="price-number">
     <span class="numberPrice" aria-label="numberlikes"></span>
@@ -132,59 +136,65 @@ const mediaFunction = async () => {
     <p> ${resultFound.price} / jour </p>
     </div>
     `;
+  modalOpen.innerHTML = `
+    <div class="closeLightBox">
+    <i class="fa-solid fa-xmark"></i>
+    </div>
+    <div class="changeMediaLight">
+    <i class="fa-solid fa-angle-right"></i>
+
+    <i class="fa-solid fa-angle-left"></i>
+    </div>
+    `;
+  InputTriPopularityDate();
 };
 
-mediaFunction();
+////////////////////FunctionDeTri///////////////////////////////////////
 
-////////////////////TRI///////////////////////////////////////
-
-const triContent = async () => {
-  await mediaFunction();
-
+const InputTriPopularityDate = async () => {
   const selectTri = document.querySelector("#selectName");
-  const populariteTri = document.querySelector("#popularite");
-  const titreTri = document.querySelector("#titre");
-
-  const resultat = userMedia.filter(
-    (list) => list.photographerId == idPhotograph
-  );
-  resultat.sort((a, b) => a.likes - b.likes);
-  console.log(resultat);
-
-  selectTri.addEventListener("change", () => {
+  const populariteTri = document.querySelector(".popularite");
+  const titreTri = document.querySelector(".titre");
+  selectTri.addEventListener("input", () => {
     if (populariteTri.selected) {
-      console.log("Good");
+      LesMediaDePhotograph.sort((a, b) => a.likes - b.likes);
+      console.log(LesMediaDePhotograph);
+      affichageDesMedia();
+      incrementLikeClickHeart();
     } else if (titreTri.selected) {
-      console.log("food");
+      LesMediaDePhotograph.sort((a, b) => {
+        if (a.title > b.title) {
+          return 1;
+        }
+        if (a.title < b.title) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      affichageDesMedia();
+      incrementLikeClickHeart();
+      document.querySelector(".titre").setAttribute("selected", "");
+      console.log(titreTri);
     }
   });
+  lightBox();
 };
-triContent();
 
-//////////////////////////like //////////////////////////////
+//////////////////////////likeFunction//////////////////////////////
 
-const likeElement = async () => {
-  // await mediaFunction();
-  // await triContent();
-  // const result = userMedia.filter(
-  //     (list) => list.photographerId == idPhotograph
-  //   );
-};
-likeElement();
-
-const likeFunction = async () => {
-  await triContent();
+const incrementLikeClickHeart = async () => {
   const heartLike = document.querySelectorAll(".fas");
   const numberLike = document.querySelectorAll(".number-like");
   const comptTotalLike = document.querySelector(".numberPrice");
-  const totalFunction = () => {
+  const totalLikeFunction = () => {
     let totalLike = 0;
     for (let i = 0; i < heartLike.length; i++) {
       totalLike = totalLike + parseInt(numberLike[i].textContent);
       comptTotalLike.innerHTML = totalLike;
     }
   };
-  totalFunction();
+  totalLikeFunction();
 
   for (let i = 0; i < heartLike.length; i++) {
     let heartLikeClick = heartLike[i];
@@ -198,46 +208,34 @@ const likeFunction = async () => {
         heartLikeClick.classList.replace("fa", "fas");
       }
 
-      totalFunction();
+      totalLikeFunction();
     });
   }
 };
-
-likeFunction();
-
-// let totalLike = 0;
-//   for (let i = 0; i < result.length; i++) {
-//   totalLike = totalLike + user[i].like
-
-// }
-
+/////////////////////lightBox///////////////////////////
 const lightBox = async () => {
 
-await mediaFunction();
-await triContent();
-await likeFunction();
+  let closeLightBox = document.querySelector(".closeLightBox");
+  const titreImage = document.querySelectorAll(".content-like h3");
+  const childLength = document.querySelectorAll("article");
 
-const modalOpen = document.querySelector(".modal-Open-Images")
-console.log(modalOpen);
-const imagesModal = document.querySelectorAll(".image-replace");
-console.log(imagesModal);
+  for (let i = 0; i < childLength.length; i++) {
+    let articleElement = childLength[i];
+    let imageTitle = titreImage[i];
 
-for(let i = 0; i < imagesModal.length; i++){
-  
-  let imageOpen = imagesModal[i];
-  console.log(imageOpen);
-  imageOpen.addEventListener("click", () => {
+    let articleChildren = articleElement.children[0];
 
-    // let lienImage = imageOpen.src;
-    // console.log(lienImage);
-    console.log(imageOpen);
-    
-    imageOpen.classList.add("imageOpen");
-    // lienImage.classList.add(".imageOpen");
+    articleChildren.addEventListener("click", () => {
+      articleChildren.classList.add("imageOpen");
+      imageTitle.classList.add("image-titre-click");
+      modalOpen.classList.add("display-Block");
+      console.log(articleChildren);
+    });
 
-    // modalOpen.classList.add("display-Block");
-  })
-}
-
-}
-lightBox();
+    closeLightBox.addEventListener("click", () => {
+      articleChildren.classList.remove("imageOpen");
+      imageTitle.classList.remove("image-titre-click");
+      modalOpen.classList.remove("display-Block");
+    });
+  }
+};

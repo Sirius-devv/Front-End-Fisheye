@@ -91,13 +91,13 @@ main{
     gap: 70px;
     margin: 40px 100px 0px 100px;
 }
-.content-image article img{
+.image-replace{
     border-radius: 10px;
     object-fit: cover;
     height: 360px;
     width: 100%;
 }
-.content-image article video{
+.video-replace{
     border-radius: 10px;
     object-fit: cover;
     height: 230px;
@@ -162,16 +162,28 @@ main{
 .display-Block{
     display: block;
 }
+/* ouverture image click */
 .imageOpen{
+    right: 0;
+    MARGIN: 5% auto;
     position: fixed;
     z-index: 4;
     left: 0;
     top: 0;
-    height: 90%;
-    width: 90%;
+    height: 85%;
+    width: 75%;
     overflow: auto;
     background-color: white;
+    bottom: 0;
 }
+/* titre image click */
+.image-titre-click{
+    position: fixed;
+    z-index: 5;
+    bottom: 0;
+    left: 13%;
+}
+
 
 
 .modal {
@@ -293,4 +305,15 @@ form p {
     .name-photograph{
         width: 30%;
     }
+}
+
+/* lightBox */
+/* closeLightBox */
+.closeLightBox{
+    color: #901C1C;
+    position: fixed;
+    right: 7%;
+    top: 6%;
+    font-size: 3.6rem;
+    cursor: pointer;
 }
