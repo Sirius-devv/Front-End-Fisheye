@@ -123,7 +123,7 @@ main{
     padding: 0;
     border-radius: -1px;
     margin-left: 68%;
-    margin-top: 186px;
+    bottom: 0;
     position: fixed;
     background: #D3573C;
     width: 27%;
@@ -170,7 +170,7 @@ main{
     z-index: 4;
     left: 0;
     top: 0;
-    height: 85%;
+    height: 83%;
     width: 75%;
     overflow: auto;
     background-color: white;
@@ -180,7 +180,7 @@ main{
 .image-titre-click{
     position: fixed;
     z-index: 5;
-    bottom: 0;
+    top: 91%;
     left: 13%;
 }
 
@@ -274,7 +274,7 @@ form p {
 .icon-like i{
     cursor: pointer;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 830px) {
     .content-image{
         grid-template-columns: 1fr 1fr;
         gap: 15px; 
@@ -316,4 +316,21 @@ form p {
     top: 6%;
     font-size: 3.6rem;
     cursor: pointer;
+}
+.rightMediaLight{
+    color: #901C1C;
+    position: fixed;
+    right: 7%;
+    top: 46%;
+    font-size: 3.6rem;
+    cursor: pointer;
+}
+.leftMediaLight{
+    color: #901C1C;
+    position: fixed;
+    left: 6%;
+    top: 46%;
+    font-size: 3.6rem;
+    cursor: pointer;
+
 }

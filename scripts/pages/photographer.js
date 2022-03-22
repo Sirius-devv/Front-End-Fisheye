@@ -63,9 +63,9 @@ const affichageDesMedia = async () => {
   contentTri.innerHTML = `
          <h3>Trier par</h3>
         <div class="select-tri">
-          <select name="selectName" id="selectName">
+          <select name="selectName" id="selectName"> 
+            <option  value="">Date</option>   
             <option  value="" class="popularite">Popularité</option>
-            <option  value="">Date</option>    
             <option  value="" class="titre">Titre</option>
               
           </select>
@@ -137,12 +137,13 @@ const affichageDesMedia = async () => {
     </div>
     `;
   modalOpen.innerHTML = `
-    <div class="closeLightBox">
+    <div class="closeLightBox" aria-label="buttonClose">
     <i class="fa-solid fa-xmark"></i>
     </div>
-    <div class="changeMediaLight">
+    <div class="rightMediaLight" aria-label="rightArrow">
     <i class="fa-solid fa-angle-right"></i>
-
+    </div>
+    <div class="leftMediaLight" aria-label="leftArrow">
     <i class="fa-solid fa-angle-left"></i>
     </div>
     `;
@@ -161,6 +162,7 @@ const InputTriPopularityDate = async () => {
       console.log(LesMediaDePhotograph);
       affichageDesMedia();
       incrementLikeClickHeart();
+      document.querySelector(".popularite").setAttribute("selected", "");
     } else if (titreTri.selected) {
       LesMediaDePhotograph.sort((a, b) => {
         if (a.title > b.title) {
@@ -212,30 +214,113 @@ const incrementLikeClickHeart = async () => {
     });
   }
 };
-/////////////////////lightBox///////////////////////////
+/////////////////////lightBox///////////////////////////////////////////
+
 const lightBox = async () => {
-
+////////////////////all const and closeLightBox///////////////////////////
   let closeLightBox = document.querySelector(".closeLightBox");
-  const titreImage = document.querySelectorAll(".content-like h3");
-  const childLength = document.querySelectorAll("article");
+  const titreImageLightBox = document.querySelectorAll(".content-like h3");
+  const rightArrowWhenOpenModal = document.querySelector(".rightMediaLight");
+  const leftArrowWhenOpenModal = document.querySelector(".leftMediaLight");
+  const articlechildVideoAndImages = Array.from(
+    document.querySelectorAll("article img,article video")
+  );
+  const maxLengthOfImageAndVideo = articlechildVideoAndImages.length;
+//////////////////variable /////////////////////////////////////////
+  let index = 0;
+  let element;
+  let titre;
 
-  for (let i = 0; i < childLength.length; i++) {
-    let articleElement = childLength[i];
-    let imageTitle = titreImage[i];
 
-    let articleChildren = articleElement.children[0];
+  for (let i = 0; i < articlechildVideoAndImages.length; i++) {
+    let articleElement = articlechildVideoAndImages[i];
+    let imageTitle = titreImageLightBox[i];
 
-    articleChildren.addEventListener("click", () => {
-      articleChildren.classList.add("imageOpen");
+    articleElement.addEventListener("click", () => {
+      articleElement.classList.add("imageOpen");
       imageTitle.classList.add("image-titre-click");
       modalOpen.classList.add("display-Block");
-      console.log(articleChildren);
-    });
-
-    closeLightBox.addEventListener("click", () => {
-      articleChildren.classList.remove("imageOpen");
-      imageTitle.classList.remove("image-titre-click");
-      modalOpen.classList.remove("display-Block");
+      index = i;
+      console.log(index);
+      element = articleElement;
+      titre = imageTitle;
     });
   }
+
+//////////////////functionArrowChangeMedia////////////////////////////
+  const rightArrowFunction = () => {
+    index++;
+    element = articlechildVideoAndImages[index];
+    titre = titreImageLightBox[index];
+    if (index === maxLengthOfImageAndVideo) {
+      index = maxLengthOfImageAndVideo - 1;
+      articlechildVideoAndImages[index].classList.remove("imageOpen");
+      titreImageLightBox[index].classList.remove("image-titre-click");
+
+      index = 0;
+
+      titreImageLightBox[index].classList.add("image-titre-click");
+      articlechildVideoAndImages[index].classList.add("imageOpen");
+    } else {
+      titreImageLightBox[index].classList.add("image-titre-click");
+      articlechildVideoAndImages[index].classList.add("imageOpen");
+      articlechildVideoAndImages[index - 1].classList.remove("imageOpen");
+      titreImageLightBox[index - 1].classList.remove("image-titre-click");
+    }
+    console.log(index);
+  };
+
+  const leftArrowFunction = () => {
+    index--;
+    element = articlechildVideoAndImages[index];
+    titre = titreImageLightBox[index];
+    if (index === -1) {
+      index = index + 1;
+
+      articlechildVideoAndImages[index].classList.remove("imageOpen");
+      titreImageLightBox[index].classList.remove("image-titre-click");
+
+      index = maxLengthOfImageAndVideo - 1;
+
+      titreImageLightBox[index].classList.add("image-titre-click");
+      articlechildVideoAndImages[index].classList.add("imageOpen");
+    } else {
+      titreImageLightBox[index].classList.add("image-titre-click");
+      articlechildVideoAndImages[index].classList.add("imageOpen");
+      articlechildVideoAndImages[index + 1].classList.remove("imageOpen");
+      titreImageLightBox[index + 1].classList.remove("image-titre-click");
+    }
+
+    console.log(index);
+  };
+////////////////functionArrowClickEvent//////////////////////////////////////
+  rightArrowWhenOpenModal.addEventListener("click", () => {
+    rightArrowFunction();
+  });
+  leftArrowWhenOpenModal.addEventListener("click", () => {
+    leftArrowFunction();
+  });
+
+/////////////////////keyboardclick--addFunctionArrowClickEvent//////////////////
+
+  document.onkeyup = (e) => {
+    if (e.key === "ArrowRight") {
+      console.log("flecheDroite");
+
+      rightArrowFunction();
+    }
+    if (e.key === "ArrowLeft") {
+      console.log("flecheGauche");
+
+      leftArrowFunction();
+    }
+  };
+////////////////////closeLightBox//////////////////////////////////////////
+  closeLightBox.addEventListener("click", () => {
+    console.log(index);
+    articlechildVideoAndImages[index].classList.remove("imageOpen");
+    titreImageLightBox[index].classList.remove("image-titre-click");
+    modalOpen.classList.remove("display-Block");
+    console.log(index);
+  });
 };
