@@ -4,12 +4,28 @@ const modalContact = document.querySelector("#contact_modal");
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
+  document.onkeyup = (e) => {
+  if(e.key === "Escape"){
+    modal.style.display = "none";
+    main.classList.remove("display-none")
+  }
+}
+
+const ButtonContact = () => {
+const main =  document.querySelector("main")
+main.classList.add("display-none")
+}
+ButtonContact();
+
 }
 
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
+  main.classList.remove("display-none")
 }
+
+
 const callFetch = async () => {
   await fetch("data/photographers.json")
     .then((res) => res.json())
@@ -26,8 +42,8 @@ const modalValid = async () => {
   modalContact.innerHTML = `
      <div class="modal">
      <header>
-      <h2>Contactez-moi ${found.name}</h2>
-      <img src="assets/icons/close.svg" onclick="closeModal()" />
+      <h2 tabindex="0" aria-label="Contactez-moi">Contactez-moi ${found.name}</h2>
+      <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close-Form-Contact" alt="bouton de fermeture"/>
     </header>
     <form
       name="reserve"
@@ -42,8 +58,9 @@ const modalValid = async () => {
           type="text"
           id="first"
           name="first"
+          aria-label="prenom"
         /><br />
-        <p class="prenom-error style-error">
+        <p class="prenom-error style-error" aria-label="erreur minimum de caracteres">
           Veuillez entrer 2 caractères ou plus
         </p>
       </div>
@@ -54,8 +71,9 @@ const modalValid = async () => {
           type="text"
           id="last"
           name="last"
+          aria-label="nom"
         /><br />
-        <p class="name-error style-error">
+        <p class="name-error style-error" aria-label="erreur minimum de caracteres">
           Veuillez entrer 2 caractères ou plus
         </p>
       </div>
@@ -66,8 +84,9 @@ const modalValid = async () => {
           type="text"
           id="email"
           name="email"
+          aria-label="email"
         /><br />
-        <p class="message-adresse style-error">
+        <p class="message-adresse style-error" aria-label="erreur minimum de caracteres">
           veuillez entrer une adresse émail valide
         </p>
       </div>
@@ -78,13 +97,14 @@ const modalValid = async () => {
           id="message"
           cols="30"
           rows="10"
+          aria-label="entrez votre texte ici"
         ></textarea>
         <br />
-        <p class="message-error">
-          veuillez entrer un minimun de caractères
+        <p class="message-error" aria-label="erreur minimum de caracteres">
+          veuillez entrer un minimum de caractères
         </p>
       </div>
-      <button class="contact_button">Envoyer</button>
+      <button class="contact_button" aria-label="envoyer-le-formulaire">Envoyer</button>
     </form>
   </div>`;
 };
@@ -95,9 +115,12 @@ const formFunction = async () => {
   const formValidation = document.querySelector("#formvalidation");
   // all Input
   const prenomInput = document.querySelector("#first");
+  console.log(prenomInput);
   const nameInput = document.querySelector("#last");
   const emailInput = document.querySelector("#email");
+  console.log(emailInput);
   const yourMessage = document.querySelector("#message");
+  console.log(yourMessage);
   // message error
   const prenomError = document.querySelector(".prenom-error");
   const nameError = document.querySelector(".name-error");
@@ -157,3 +180,4 @@ const formFunction = async () => {
   });
 };
 formFunction();
+

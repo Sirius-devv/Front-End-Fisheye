@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -14,269 +14,91 @@
       crossorigin="anonymous"
     />
     <link rel="shortcut icon" href="#" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/d35631a1c1.js" crossorigin="anonymous"></script>
+    <meta
+      name="description"
+      content="Ici vous retrouverez toutes les photos et vidéos du photographe , choisissez celle qui vous plaît et contactez directement le photographe ,
+    facile non ?"
+    />
+    <script
+      src="https://kit.fontawesome.com/d35631a1c1.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo"
-      /></a>
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="logo du site Fisheye"
+        />
+      </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <!-- <div class="name-photograph">
-          <h2>Mimi Keel</h2>
-          <h3>London, UK</h3>
-          <p>Voir le beau dans le quotidien</p>
-        </div>
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
-        <img
-          src="./FishEye-Photos/Sample-Photos/All-Photo/MimiKeel.jpg"
-          alt="Photo-photograph-MimiKeel"
-        /> -->
-      </div>
+      <div class="photograph-header"></div>
       <div class="content-tri">
-        <!-- <h3>Trier par</h3>
+        <h3  tabindex="0">Trier par</h3>
         <div class="select-tri">
-          <select name="" id="">
-            <option selected value="">Popularité</option>
-            <option value="">Date</option>
-            <option value="">Titre</option>
+          <select name="selectName" id="selectName"> 
+            <option  value="" class="date">Date</option>   
+            <option  value="" class="popularite">Popularité</option>
+            <option  value="" class="titre">Titre</option>            
           </select>
-        </div> -->
-      </div>    
+        </div> 
+      </div>  
+      <div class="content-image"></div>
+      <div class="modal-Open-Images">
+        <div class="closeLightBox" aria-label="buttonClose">
+          <i class="fa-solid fa-xmark"></i>
+          </div>
+          <div class="rightMediaLight" aria-label="rightArrow">
+          <i class="fa-solid fa-angle-right" aria-label="rightArrow"></i>
+          </div>
+          <div class="leftMediaLight" aria-label="leftArrow">
+          <i class="fa-solid fa-angle-left" aria-label="leftArrow"></i>
+          </div>
+      </div>
       <div class="contentLikeTotal">
-        
+        <div class="price-number">
+          <span class="numberPrice"  tabindex="0"></span>
+          <span class="icon-like-svg"  aria-label="icon-Heart"  tabindex="0"
+            > <svg
+            class="
+              main__Restaurant__containers__accueil__card__svg__heart-full
+            "
+            aria-label="icon-Heart"
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="#000000" 
+            tabindex="0"
+            
+          >
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+            />
+          </svg></span>
+          </div>
+          <div class="day-price">
+          </div>
       </div>
-      <div class="content-image">
-        <!-- <article>
-          <img
-            src="FishEye-Photos/Sample-Photos/Mimi/Animals_Rainbow.jpg"
-            alt="Arc-en-ciel"
-          />
-          <div class="content-like">
-            <h3>Arc-en-ciel</h3>
-            <div class="number-icon">
-              <span class="number-like" aria-label="numberlikes">12</span>
-              <span class="icon-like" aria-label="likes"
-                ><i class="fas fa-heart"></i
-              ></span>
-            </div>
-          </div>
-        </article>
-        <article>
-          <img
-            src="FishEye-Photos/Sample-Photos/Mimi/Travel_Lonesome.jpg"
-            alt="Solitude"
-          />
-          <div class="content-like">
-            <h3>Solitude</h3>
-            <div class="number-icon">
-              <span class="number-like" aria-label="numberlikes">12</span>
-              <span class="icon-like" aria-label="likes"
-                ><i class="fas fa-heart"></i
-              ></span>
-            </div>
-          </div>
-        </article>
-        <article>
-          <img
-            src="FishEye-Photos/Sample-Photos/Mimi/Event_SeasideWedding.jpg"
-            alt="Mariage-a-la-mer"
-          />
-          <div class="content-like">
-            <h3>Mariage à la mer</h3>
-            <div class="number-icon">
-              <span class="number-like" aria-label="numberlikes">12</span>
-              <span class="icon-like" aria-label="likes"
-                ><i class="fas fa-heart"></i
-              ></span>
-            </div>
-          </div>
-        </article>
-        <article>
-          <img
-            src="FishEye-Photos/Sample-Photos/Mimi/Portrait_Contexte.jpg"
-            alt=""
-          />
-          <div class="content-like">
-            <h3>Arrière plan</h3>
-            <div class="number-icon">
-              <span class="number-like" aria-label="numberlikes">12</span>
-              <span class="icon-like" aria-label="likes"
-                ><i class="fas fa-heart"></i
-              ></span>
-            </div>
-          </div>
-        </article>
-        <article>
-          <img
-            src="FishEye-Photos/Sample-Photos/Mimi/Event_BenevidesMariage.jpg"
-            alt="Mariage-Benevides"
-          />
-          <div class="content-like">
-            <h3>Mariage Benevides</h3>
-            <div class="number-icon">
-              <span class="number-like" aria-label="numberlikes">12</span>
-              <span class="icon-like" aria-label="likes"
-                ><i class="fas fa-heart"></i
-              ></span>
-            </div>
-          </div>
-        </article>
-        <article>
-          <img
-            src="FishEye-Photos/Sample-Photos/Mimi/Portrait_Mercredi.jpg"
-            alt="Wednesday"
-          />
-          <div class="content-like">
-            <h3>Wednesday</h3>
-            <div class="number-icon">
-              <span class="number-like" aria-label="numberlikes">12</span>
-              <span class="icon-like" aria-label="likes"
-                ><i class="fas fa-heart"></i
-              ></span>
-            </div>
-          </div>
-        </article>
-        <article>
-          <img
-            src="FishEye-Photos/Sample-Photos/Mimi/Travel_couleur-de-la-colline.jpg"
-            alt="Couleur-de-la-colline"
-          />
-          <div class="content-like">
-            <h3>Couleur de la colline</h3>
-            <div class="number-icon">
-              <span class="number-like" aria-label="numberlikes">12</span>
-              <span class="icon-like" aria-label="likes"
-                ><i class="fas fa-heart"></i
-              ></span>
-            </div>
-          </div>
-        </article>
-        <article>
-          <img
-            src="FishEye-Photos/Sample-Photos/Mimi/Event_PintoMariage.jpg"
-            alt="Mariage-Pinto"
-          />
-          <div class="content-like">
-            <h3>Mariage Pinto</h3>
-            <div class="number-icon">
-              <span class="number-like" aria-label="numberlikes">12</span>
-              <span class="icon-like" aria-label="likes"
-                ><i class="fas fa-heart"></i
-              ></span>
-            </div>
-          </div>
-        </article>
-        <article>
-          <img
-            src="FishEye-Photos/Sample-Photos/Mimi/Portrait_Nora.jpg"
-            alt="Portrait-de-Nora"
-          />
-          <div class="content-like">
-            <h3>Portrait de Nora</h3>
-            <div class="number-icon">
-              <span class="number-like" aria-label="numberlikes">12</span>
-              <span class="icon-like" aria-label="likes"
-                ><i class="fas fa-heart"></i
-              ></span>
-            </div>
-          </div>
-        </article>
-        <article>
-          <img
-            src="FishEye-Photos/Sample-Photos/Mimi/Chevaux-sauvages.jpg"
-            alt="Chevaux-sauvages"
-            id="video-miniature"
-          />
-          <div class="content-like">
-            <h3>Chevaux sauvages</h3>
-            <div class="number-icon">
-              <span class="number-like" aria-label="numberlikes">12</span>
-              <span class="icon-like" aria-label="likes"
-                ><i class="fas fa-heart"></i
-              ></span>
-            </div>
-          </div>
-        </article> -->
-      </div>
-  <div class="modal-Open-Images">
-    
-  </div>
     </main>
-    <div id="contact_modal">
-      <!-- <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form
-          name="reserve"
-          action="photographer.html"
-          method="get"
-          id="formvalidation"
-        >
-          <div class="formData">
-            <label for="first">Prénom</label><br />
-            <input
-              class="text-control"
-              type="text"
-              id="first"
-              name="first"
-            /><br />
-            <p class="prenom-error style-error">
-              Veuillez entrer 2 caractères ou plus
-            </p>
-          </div>
-          <div class="formData">
-            <label for="last">Nom</label><br />
-            <input
-              class="text-control"
-              type="text"
-              id="last"
-              name="last"
-            /><br />
-            <p class="name-error style-error">
-              Veuillez entrer 2 caractères ou plus
-            </p>
-          </div>
-          <div class="formData">
-            <label for="email">E-mail</label><br />
-            <input
-              class="text-control"
-              type="text"
-              id="email"
-              name="email"
-            /><br />
-            <p class="message-adresse style-error">
-              veuillez entrer une adresse émail valide
-            </p>
-          </div>
-          <div class="formData">
-            <label for="message">Votre message</label><br />
-            <textarea
-              name="message"
-              id="message"
-              cols="30"
-              rows="10"
-            ></textarea>
-            <br />
-            <p class="message-error">
-              veuillez entrer un minimun de caractères
-            </p>
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
-      </div> -->
-    </div>
+    <div id="contact_modal"></div>
+    <script src="scripts/pages/media.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
+    
   </body>
 </html>

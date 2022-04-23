@@ -92,6 +92,7 @@ main{
     margin: 40px 100px 0px 100px;
 }
 .image-replace{
+    cursor: pointer;
     border-radius: 10px;
     object-fit: cover;
     height: 360px;
@@ -121,7 +122,6 @@ main{
     z-index: 1;
     border-radius: 3px;
     padding: 0;
-    border-radius: -1px;
     margin-left: 68%;
     bottom: 0;
     position: fixed;
@@ -164,10 +164,12 @@ main{
 }
 /* ouverture image click */
 .imageOpen{
+    
     right: 0;
     MARGIN: 5% auto;
     position: fixed;
     z-index: 4;
+    cursor: auto;
     left: 0;
     top: 0;
     height: 83%;
@@ -309,6 +311,18 @@ form p {
 
 /* lightBox */
 /* closeLightBox */
+.mediaLightbox{
+    border-radius: 16px;
+    background-color: #DB8876;
+    width: 62%;
+    height: 71%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: 10% auto 2% AUTO;
+}
 .closeLightBox{
     color: #901C1C;
     position: fixed;
