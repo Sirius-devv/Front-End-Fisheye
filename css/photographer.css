@@ -313,15 +313,14 @@ form p {
 /* closeLightBox */
 .mediaLightbox{
     border-radius: 16px;
-    background-color: #DB8876;
     width: 62%;
-    height: 71%;
+    height: 82%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
-    margin: 10% auto 2% AUTO;
+    padding: 25px;
+    margin: 5% auto 2% AUTO;
 }
 .closeLightBox{
     color: #901C1C;
@@ -348,3 +347,21 @@ form p {
     cursor: pointer;
 
 }
+
+.media-Open{  
+    cursor: pointer;
+    border-radius: 10px;
+    object-fit: cover;
+    height: 90%;
+    width: 100%;   
+}
+
+.titre-lightbox{
+    color: #901C1C;
+    font-size: 1.5rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    width: 100%;
+}
+    

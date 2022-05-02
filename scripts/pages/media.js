@@ -43,17 +43,20 @@ class MediaImages {
    
    
   }
-//  async likesClicked (){
-//    await 
-//    
-     
-//    }
+  affichageLightBox() {
+    
    
-
+    return `
    
-
-
-//   }
+        
+          <img
+            src="FishEye-Photos/Sample-Photos/${this.photographerId}/${this.image}"
+             alt="${this.title}"  class="media-Open"  tabindex="0" 
+            />
+            <h3 class="titre-lightbox" tabindex="0"> ${this.title} </h3>
+         
+    `
+  }
 
 
 }
@@ -98,23 +101,19 @@ class MediaVideo {
     }
    
   }
-// async likesClicked (){
+  affichageLightBox() {
+    return `
+  
+        
+        <video controls="controls" class="media-Open" aria-label="${this.title}"  tabindex="0">
+          <source src="FishEye-Photos/Sample-Photos/${this.photographerId}/${this.video}" class="video-replace"  tabindex="0">
+        </video>
+        <h3 class="titre-lightbox" tabindex="0"> ${this.title} </h3>
+      
+        
+    `
+  }
 
-//   await 
-//    console.log(this.likes);
-//    const heartLike = document.querySelectorAll(".icon-like")
-//    for (let i = 0; i < heartLike.length; i++) {
-//      const element = heartLike[i];
-//      element.addEventListener("click",() => {
-//        console.log(element);
-//         this.likes++
-//        console.log(this.likes);
-//      })
-     
-//    }
-
-
-//   }
  
   
 }
@@ -141,3 +140,7 @@ class MediaFactory{
     }
   }
 }
+
+
+
+
