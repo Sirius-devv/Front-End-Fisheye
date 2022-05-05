@@ -7,12 +7,12 @@ const callFetch = async () => {
     .then((res) => res.json())
     .then((data) => {
       userData = data.photographers;
-      theMedia = data.media;
     });
-
 };
+// affichage des photograph page d accueil
 // element du json dans la page d'accueil
-const userDisplay = async () => {
+
+const affichageDesPhotographDansLaccueil = async () => {
   await callFetch();
   photographSection.innerHTML = userData
     .map(
@@ -34,4 +34,4 @@ const userDisplay = async () => {
     .join("");
 };
 
-userDisplay();
+affichageDesPhotographDansLaccueil();

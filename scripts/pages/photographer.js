@@ -1,21 +1,20 @@
-//Mettre le code JavaScript lié à la page photographer.html
 // creation d'une nouvelle page avec les id
-///////////////////idDuPhotogrtaphRecuperation////////////////
+/// ////////////////idDuPhotographRecuperation////////////////
 const idPhotograph = window.location.search.split("?").join("");
-//////////////////////LesConteneurGlobalDeToutLesElementEnHtml///////////////////////
+/// ///////////////////LesConteneurGlobalDeToutLesElementEnHtml///////////////////////
 const photographHeader = document.querySelector(".photograph-header");
 const contentImage = document.querySelector(".content-image");
 const dayPrice = document.querySelector(".day-price");
 const modalOpen = document.querySelector(".modal-Open-Images");
+const selectElement = document.querySelector(".select-tri");
 
-/////////////////////////LesVariablesGlobalQuiChangeEnFunction//////////////////////////
-let numberLike = [];
+/// //////////////////////LesVariablesGlobalQuiChangeEnFunction//////////////////////////
+
 let photograph;
 let userMedia = [];
-let contentLikeNumber = [];
 let LesMediaDePhotograph = [];
 
-/////////////functionCallFetch/////////////////////
+/// //////////functionCallFetch/////////////////////
 const fetchCall = async () => {
   await fetch("data/photographers.json")
     .then((res) => res.json())
@@ -36,9 +35,8 @@ const fetchCall = async () => {
         }
         if (a.title > b.title) {
           return -1;
-        } else {
-          return 0;
         }
+        return 0;
       });
 
       affichageDesMedia();
@@ -47,7 +45,7 @@ const fetchCall = async () => {
 };
 fetchCall();
 
-//////////////////////FunctionAffichageDesPhotographerDansLeurPage/////////////////////////:
+/// ///////////////////FunctionAffichageDesPhotographerDansLeurPage/////////////////////////:
 const affichagePhotographer = async () => {
   photographHeader.innerHTML = `
           <div class="name-photograph">
@@ -63,16 +61,19 @@ const affichagePhotographer = async () => {
           alt="Photo miniature de ${photograph.name}" 
           tabindex="0" 
         />`;
+  selectElement.innerHTML = `
+        <select name="selectName" id="selectName">
+        <option value="" class="date">Date</option>
+        <option value="" class="popularite">Popularité</option>
+        <option value="" class="titre">Titre</option>
+      </select>
+        `;
 };
-///////////////functionAffichageDesMedia/////////////////////
+/// ////////////functionAffichageDesMedia/////////////////////
 const affichageDesMedia = async () => {
-  const resultFound = userPhotograph.find(
-    (element) => element.id == idPhotograph
-  );
-
-  contentImage.innerHTML = LesMediaDePhotograph.map((media) => {
-    return media.affichage();
-  }).join("");
+  contentImage.innerHTML = LesMediaDePhotograph.map((media) =>
+    media.affichage()
+  ).join("");
   modalOpen.innerHTML = ` <div class="closeLightBox" aria-label="buttonClose">
   <i class="fa-solid fa-xmark"></i>
   </div>
@@ -86,9 +87,9 @@ const affichageDesMedia = async () => {
   </div> `;
 
   let index = 0;
-  //////////////lightBox/////////////////////
+  /// ///////////lightBox/////////////////////
   const lightBox = () => {
-    ////////////const de la lightbox///////////////////////
+    /// /////////const de la lightbox///////////////////////
     const mediaLightBox = document.querySelector(".mediaLightbox");
     const modalLightBox = document.querySelector(".modal-Open-Images");
     const closeLightBox = document.querySelector(".closeLightBox");
@@ -102,7 +103,7 @@ const affichageDesMedia = async () => {
     for (let i = 0; i < imageAndVideo.length; i++) {
       const mediaBox = imageAndVideo[i];
 
-      /////////function d'ouverture de la lightbox///////////
+      /// //////function d'ouverture de la lightbox///////////
       const openLightBox = () => {
         index = i;
         modalLightBox.classList.add("display-Block");
@@ -110,11 +111,11 @@ const affichageDesMedia = async () => {
           LesMediaDePhotograph[index].affichageLightBox();
         main.classList.add("display-none");
       };
-      /////////////au click//////////////
+      /// //////////au click//////////////
       mediaBox.addEventListener("click", () => {
         openLightBox();
       });
-      ///////////////au clavier/////////////////
+      /// ////////////au clavier/////////////////
       mediaBox.addEventListener("keydown", (event) => {
         if (event.code == "Enter") {
           openLightBox();
@@ -122,7 +123,7 @@ const affichageDesMedia = async () => {
       });
     }
 
-    //////////////function de la lightbox/////////////////
+    /// ///////////function de la lightbox/////////////////
     const clickright = () => {
       if (index == maxImageAndVideo - 1) {
         index = -1;
@@ -142,7 +143,7 @@ const affichageDesMedia = async () => {
       main.classList.remove("display-none");
       index = 0;
     };
-    //////////////////evenement de la lightBox//////////////////::
+    /// ///////////////evenement de la lightBox//////////////////::
     rightMediaLight.addEventListener("click", () => {
       clickright();
     });
@@ -169,20 +170,20 @@ const affichageDesMedia = async () => {
 
   lightBox();
 
-  ///////////////////function d'incrementation////////////
+  /// ////////////////function d'incrementation////////////
   const heartLike = document.querySelectorAll(".icon-like");
   for (let i = 0; i < heartLike.length; i++) {
     const lesLikeDesMedia = heartLike[i];
-    //////////////la function d 'incrementaion/////////////
+    /// ///////////la function d 'incrementaion/////////////
     const incrementationDesMedia = () => {
       LesMediaDePhotograph[i].likeHeart();
       affichageDesMedia();
     };
-    ///////////// au click///////////////
+    /// ////////// au click///////////////
     lesLikeDesMedia.addEventListener("click", () => {
       incrementationDesMedia();
     });
-    ////////////////au clavier//////////////
+    /// /////////////au clavier//////////////
     lesLikeDesMedia.addEventListener("keydown", (event) => {
       if (event.code == "Enter") {
         incrementationDesMedia();
@@ -190,24 +191,24 @@ const affichageDesMedia = async () => {
     });
   }
 
-  ////////////////////////total--Like///////////////////////
+  /// /////////////////////total--Like///////////////////////
   const totalLikeFunction = () => {
     const comptTotalLike = document.querySelector(".numberPrice");
     const heartLike = document.querySelectorAll(".number-like");
     let totalLike = 0;
     for (let i = 0; i < heartLike.length; i++) {
-      totalLike = totalLike + parseInt(LesMediaDePhotograph[i].likes);
+      totalLike += parseInt(LesMediaDePhotograph[i].likes);
       comptTotalLike.innerHTML = totalLike;
     }
   };
   totalLikeFunction();
-  //////////////Price --- day//////////////
+  /// ///////////Price --- day//////////////
   dayPrice.innerHTML = `
   <p  tabindex="0"> ${photograph.price} / jour </p>
   `;
 };
 
-////////////////////FunctionDeTri///////////////////////////////////////
+/// /////////////////FunctionDeTri///////////////////////////////////////
 
 const InputTriPopularityDate = async () => {
   const selectTri = document.querySelector("#selectName");
@@ -228,9 +229,8 @@ const InputTriPopularityDate = async () => {
         }
         if (a.title < b.title) {
           return -1;
-        } else {
-          return 0;
         }
+        return 0;
       });
 
       affichageDesMedia();
@@ -243,9 +243,8 @@ const InputTriPopularityDate = async () => {
         }
         if (a.title > b.title) {
           return -1;
-        } else {
-          return 0;
         }
+        return 0;
       });
 
       document.querySelector(".date").setAttribute("selected", "");

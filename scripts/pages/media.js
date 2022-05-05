@@ -1,6 +1,3 @@
-
-
-
 class MediaImages {
   constructor(image, photographerId, title, likes, date, price) {
     this.image = image;
@@ -31,21 +28,18 @@ class MediaImages {
     </article>
       `;
   }
-  likeHeart () {
-  
-    if(this.click == false){
-      this.likes++
+
+  likeHeart() {
+    if (this.click == false) {
+      this.likes++;
       this.click = true;
-    }else{
-      this.likes--
+    } else {
+      this.likes--;
       this.click = false;
     }
-   
-   
   }
+
   affichageLightBox() {
-    
-   
     return `
    
         
@@ -55,12 +49,9 @@ class MediaImages {
             />
             <h3 class="titre-lightbox" tabindex="0"> ${this.title} </h3>
          
-    `
+    `;
   }
-
-
 }
-
 
 class MediaVideo {
   constructor(video, photographerId, title, likes, date, price) {
@@ -91,16 +82,16 @@ class MediaVideo {
           `;
   }
 
-  likeHeart () {
-    if(this.click){
-      this.likes--
+  likeHeart() {
+    if (this.click) {
+      this.likes--;
       this.click = false;
-    }else{
-      this.likes++
+    } else {
+      this.likes++;
       this.click = true;
     }
-   
   }
+
   affichageLightBox() {
     return `
   
@@ -111,36 +102,29 @@ class MediaVideo {
         <h3 class="titre-lightbox" tabindex="0"> ${this.title} </h3>
       
         
-    `
+    `;
   }
-
- 
-  
 }
 
-
-
-class MediaFactory{
-  static createMedia(media){
-    if(media.image){
-      return new MediaImages(media.image,
+class MediaFactory {
+  static createMedia(media) {
+    if (media.image) {
+      return new MediaImages(
+        media.image,
         media.photographerId,
         media.title,
         media.likes,
         media.date,
-        media.price)
-    } else{
-      return new MediaVideo(media.video,
-        media.photographerId,
-        media.title,
-        media.likes,
-        media.date,
-        media.price)
-        
+        media.price
+      );
     }
+    return new MediaVideo(
+      media.video,
+      media.photographerId,
+      media.title,
+      media.likes,
+      media.date,
+      media.price
+    );
   }
 }
-
-
-
-

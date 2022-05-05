@@ -1,30 +1,33 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 // form contact
 const modalContact = document.querySelector("#contact_modal");
-
+/// /////function d'ouverture de la modal de contact//////
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
   document.onkeyup = (e) => {
-  if(e.key === "Escape"){
-    modal.style.display = "none";
-    main.classList.remove("display-none")
-  }
-}
+    if (e.key === "Escape") {
+      modal.style.display = "none";
+      main.classList.remove("display-none");
+    }
+  };
 
-const ButtonContact = () => {
-const main =  document.querySelector("main")
-main.classList.add("display-none")
+  const ButtonContact = () => {
+    const main = document.querySelector("main");
+    main.classList.add("display-none");
+  };
+  ButtonContact();
 }
-ButtonContact();
-
-}
-
+/// //////fermeture////////////
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
-  main.classList.remove("display-none")
+  main.classList.remove("display-none");
 }
-
 
 const callFetch = async () => {
   await fetch("data/photographers.json")
@@ -35,10 +38,10 @@ const callFetch = async () => {
     });
 };
 
-// modal open
+// modal affichage de contact
 const modalValid = async () => {
   await callFetch();
-  const found = userData.find(element => element.id == idPhotograph)
+  const found = userData.find((element) => element.id == idPhotograph);
   modalContact.innerHTML = `
      <div class="modal">
      <header>
@@ -108,7 +111,7 @@ const modalValid = async () => {
     </form>
   </div>`;
 };
-// creation du modele de validation 
+// creation du modele de validation
 const formFunction = async () => {
   await modalValid();
 
@@ -127,7 +130,7 @@ const formFunction = async () => {
   const emailError = document.querySelector(".message-adresse");
   const messageError = document.querySelector(".message-error");
   // regex
-  let regexmail =
+  const regexmail =
     /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/;
   // form -- Validation
   formValidation.addEventListener("submit", (e) => {
@@ -171,13 +174,16 @@ const formFunction = async () => {
       yourMessage.classList.remove("border-invalid");
       yourMessage.classList.add("border-valid");
     }
-    if(prenomInput.value.length >= 2 && nameInput.value.length >= 2  && emailInput.value.match(regexmail) && yourMessage.value.length >= 4){
-      console.log("good");
+    if (
+      prenomInput.value.length >= 2 &&
+      nameInput.value.length >= 2 &&
+      emailInput.value.match(regexmail) &&
+      yourMessage.value.length >= 4
+    ) {
       location.reload();
       e.preventDefault();
     }
-    e.preventDefault();  
+    e.preventDefault();
   });
 };
 formFunction();
-

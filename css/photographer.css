@@ -288,6 +288,13 @@ form p {
     .content-tri{
         margin: 4%;
     }
+    .contentLikeTotal{
+        font-size: 1rem;
+        width: 31%;
+    }
+    .main__Restaurant__containers__accueil__card__svg__heart-full{
+        height: 18px;
+    }
 }
 @media screen and (max-width: 500px){
     .content-image{
