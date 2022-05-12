@@ -17,6 +17,11 @@
             // "semi":false ,
             // "singleQuote": true,
              "endOfLine" : "auto"
-        }]
+        }],
+        "max-classes-per-file": [
+            "error",
+            { "ignoreExpressions": true, "max": 3}
+        ],
+        "extends": "eslint:recommended"
     }
 }

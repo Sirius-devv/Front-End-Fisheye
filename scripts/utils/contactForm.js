@@ -1,10 +1,7 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable no-useless-escape */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
+
 // form contact
 const modalContact = document.querySelector("#contact_modal");
+
 /// /////function d'ouverture de la modal de contact//////
 function displayModal() {
   const modal = document.getElementById("contact_modal");
@@ -28,19 +25,21 @@ function closeModal() {
   modal.style.display = "none";
   main.classList.remove("display-none");
 }
+let userData;
 
 const callFetch = async () => {
   await fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
       userData = data.photographers;
-      theMedia = data.media;
     });
 };
 
 // modal affichage de contact
 const modalValid = async () => {
   await callFetch();
+
+  // eslint-disable-next-line eqeqeq
   const found = userData.find((element) => element.id == idPhotograph);
   modalContact.innerHTML = `
      <div class="modal">
@@ -131,6 +130,7 @@ const formFunction = async () => {
   const messageError = document.querySelector(".message-error");
   // regex
   const regexmail =
+    // eslint-disable-next-line no-useless-escape
     /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/;
   // form -- Validation
   formValidation.addEventListener("submit", (e) => {
@@ -180,6 +180,7 @@ const formFunction = async () => {
       emailInput.value.match(regexmail) &&
       yourMessage.value.length >= 4
     ) {
+      // eslint-disable-next-line no-restricted-globals
       location.reload();
       e.preventDefault();
     }
